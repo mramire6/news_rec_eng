@@ -1,40 +1,20 @@
 import sqlite3
+import db_config
 
-conn = sqlite3.connect('axios_news.db')
-c = conn.cursor()
+def create_connection(db_filename):
+    conn = sqlite3.connect(db_filename)
+    print('connection to sqlite established')
+    return conn
 
-#Create table - Articles
-articles_table = """CREATE TABLE IF NOT EXISTS Articles
-                    (
-                    Section STRING,
-                    Hyperlink STRING,
-                    ArticleID INTEGER PRIMARY KEY,
-                    MainText STRING,
-                    Headline STRING,
-                    PubDate STRING,
-                    WordCount INTEGER
-                    );"""
-c.execute(articles_table)
+def create_table(conn, create_table_sql):
+    c = conn.cursor()
+    print('cursor object created')
+    c.execute(create_table_sql)
+    print('Empty table has been created in database')
 
-#Create table - Authors
-authors_table = """CREATE TABLE IF NOT EXISTS Authors
-                    (
-                    Name STRING,
-                    Section STRING,
-                    Position STRING,
-                    Description STRING,
-                    Hyperlink STRING,
-                    AuthorID INTEGER PRIMARY KEY,
-                    ArticleID INTEGER,
-                    FOREIGN KEY(ArticleID) REFERENCES Articles(ArticleID)
-                    );"""
-c.execute(authors_table)
-
-#Create table - ArticleAuthors
-articleauthors_table = """CREATE TABLE IF NOT EXISTS ArticleAuthors
-                          (
-                          ArticleID INTEGER,
-                          AuthorID INTEGER
-                          );"""
-c.execute(articleauthors_table)
+if __name__ == "__main__":
+    conn = create_connection(db_config.db_filename)
+    create_table(conn, db_config.articles_table)
+    create_table(conn, db_config.authors_table)
+    create_table(conn, db_config.articleauthors_table)
 
