@@ -26,3 +26,5 @@ instance/
 # Jupyter Notebook
 .ipynb_checkpoints
 
+#Python Cache
+__pycache__/
