@@ -1,7 +1,6 @@
 from flask import render_template, url_for
 from nlp_model import app
 from nlp_model.forms import UserSelectionForm
-from nlp_model.models import Articles, Authors
 
 
 @app.route('/')

@@ -9,3 +9,5 @@ app.config.from_object(Config)
 db = SQLAlchemy(app)
 
 from nlp_model import routes
+
+
