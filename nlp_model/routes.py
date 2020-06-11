@@ -1,6 +1,6 @@
 from flask import render_template, url_for
 from nlp_model import app
-from nlp_model.forms import SectionForm, TopicForm
+from nlp_model.forms import UserSelectionForm
 from nlp_model.models import Articles, Authors
 
 
@@ -19,7 +19,7 @@ def aboutme():
     """
     return render_template('about.html', title='About Me')
 
-@app.route('/nlp_model')
+@app.route('/nlp_model', methods=['GET', 'POST'])
 def nlp_model():
     """
     This URI will allow the user to select a section (e.g. technology)
@@ -28,7 +28,19 @@ def nlp_model():
     Next to it will also be the Go Deeper article tha Axios recommends
     for comparison purposes
     """
-    return render_template('nlp_model.html', title='NLP Model')
+    form = UserSelectionForm()
+    user_section = form.section.data
+    user_topic = form.topic.data
+    user_selection = form.submit.data
+    if user_selection:
+        return render_template('nlp_model.html',
+            title='NLP Model',
+            form=form,
+            user_section=user_section,
+            user_topic=user_topic)
+    return render_template('nlp_model.html',
+            title='NLP Model',
+            form=form)
 
 # @app.route('nlp_model/prediction')
 # def nlp_model_prediction():

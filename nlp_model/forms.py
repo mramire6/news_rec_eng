@@ -1,16 +1,14 @@
 from flask_wtf import FlaskForm
 from wtforms import SelectField, SubmitField, StringField
 from wtforms.validators import DataRequired, Length
+from config import Defaults
 
 
-class SectionForm(FlaskForm):
+class UserSelectionForm(FlaskForm):
     section = SelectField('Section',
-                          choices=['technology', 'politics', 'health'])
-    submit = SubmitField('Selected Section')
-
-class TopicForm(FlaskForm):
+                          choices=Defaults.section_default)
     topic = StringField('Topic', validators=[DataRequired(), Length(min=2, max=20)])
-    submit = SubmitField('Selected Topic')
+    submit = SubmitField('Submit')
 
 #This is where the forms for the user will live. The user will input what the
 #section
