@@ -28,3 +28,6 @@ instance/
 
 #Python Cache
 __pycache__/
+
+#Environment Variables
+.flaskenv
