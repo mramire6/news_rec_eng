@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>MARG: {{ title }}</title>
+    {% if title %}
+        <title>MARG: {{ title }}</title>
+    {% else %}
+    {% endif %}
 </head>
 <body>
     <h1>Welcome to the {{ title }} Page</h1>
