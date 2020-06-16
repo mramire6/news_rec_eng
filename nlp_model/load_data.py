@@ -1,13 +1,5 @@
 from datetime import date
 
-######Dummy data for testing purposes#######
-
-dummy_main_url = 'https://www.axios.com/'
-dummy_section_url = 'https://www.axios.com/technology/'
-dummy_section_date_url = 'https://www.axios.com/technology/2020/6/02'
-
-#########
-
 def find_latest_URLs(soup):
     """ Return list of URLs under the latest stories"""
     latest_stories = soup.find('div',id='maincontent').find('section').find_all('a', class_='title-link')
@@ -27,3 +19,4 @@ def find_URLs_by_section_or_date(soup):
     """ Return list of URLs for a specific section or section and date """
     all_urls = soup.find_all('a', class_='gtm-content-click title-link')
     return [all_urls[url_num]['href'] for url_num in range(len(all_urls))]
+
