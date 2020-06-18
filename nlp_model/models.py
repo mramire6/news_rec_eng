@@ -1,5 +1,6 @@
 from nlp_model import db
 
+
 association = db.Table('association',
     db.Column('articleID', db.Integer, db.ForeignKey('articles.articleID')),
     db.Column('authorID', db.Integer, db.ForeignKey('authors.authorID'))

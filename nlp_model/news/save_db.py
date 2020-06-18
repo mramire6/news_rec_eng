@@ -1,5 +1,5 @@
-from nlp_model.scrape import Scrape
-from nlp_model.load_data import *
+from scrape import Scrape
+from load_data import *
 from config import Defaults
 from nlp_model.models import Articles, Authors, association
 

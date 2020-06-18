@@ -1,4 +1,7 @@
-from nlp_model import app
+from nlp_model import create_app
+
+app = create_app()
 
 if __name__ == '__main__':
     app.run()
+

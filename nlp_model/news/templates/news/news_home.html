@@ -1,22 +1,22 @@
-{% extends "layout.html" %}
+{% extends "base_layout.html" %}
 
 {% block content %}
 <div class='content-section'>
     <form method="POST" action="">
-        {{ form.hidden_tag() }}
+        {{ section_date_form.hidden_tag() }}
         <fieldset class="form-group">
             <legend class="border-bottom mb-4">Choose a section</legend>
             <div class="form-group">
-                {{ form.section.label(class="form-control-label") }}
-                {{ form.section(class="form-control form-control-lg") }}
+                {{ section_date_form.section.label(class="form-control-label") }}
+                {{ section_date_form.section(class="form-control form-control-lg") }}
             </div>
             <div class="form-group">
-                {{ form.topic.label(class="form-control-label") }}
-                {{ form.topic(class="form-control form-control-lg") }}
+                {{ section_date_form.date.label(class="form-control-label") }}
+                {{ section_date_form.date(class="form-control form-control-lg") }}
             </div>
         </fieldset>
         <div class="form-group">
-            {{ form.submit(class="btn btn-outline-info") }}
+            {{ section_date_form.submit(class="btn btn-outline-info") }}
         </div>
     </form>
     <p>
